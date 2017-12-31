@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .",
-    "start": "webpack-dev-server --inline",
-    "build": "NODE_ENV=production webpack"
+    "start": "npm-run-all start:*",
+    "test": "npm-run-all test:*",
+    "dev": "webpack-dev-server --inline",
+    "start:build": "NODE_ENV=production webpack",
+    "start:server": "nodemon server/index.js",
+    "test:security": "nsp check",
+    "test:lint": "eslint .",
+    "test:server": "mocha tests/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +24,13 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
+    "dirty-chai": "^2.0.1",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -32,7 +40,11 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "lodash-webpack-plugin": "^0.11.4",
+    "mocha": "^4.1.0",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.14.6",
+    "npm-run-all": "^4.1.2",
+    "nsp": "^3.1.0",
     "postcss": "^6.0.14",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.9",
@@ -60,6 +72,12 @@
     "react-virtualized": "^9.14.1",
     "redux": "^3.7.2",
     "redux-observable": "^0.17.0",
-    "rxjs": "^5.5.6"
+    "rxjs": "^5.5.6",
+    "yeps": "^1.1.1",
+    "yeps-error": "^1.3.1",
+    "yeps-graphql": "^0.1.0",
+    "yeps-router": "^1.2.0",
+    "yeps-server": "^1.1.2",
+    "yeps-static": "^1.4.1"
   }
 }
