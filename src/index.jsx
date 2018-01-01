@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './components/App';
+import App from './components';
 
 const render = (Component) => {
   ReactDOM.render(
@@ -11,9 +11,10 @@ const render = (Component) => {
     document.getElementById('root'),
   );
 
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      navigator.serviceWorker.register('service-worker.js').catch(() => {
+      });
     });
   }
 };

@@ -3,6 +3,7 @@ const vendor = [
   'react',
   'react-dom',
   'react-redux',
+  'react-proxy',
   'react-router',
   'react-router-redux',
   'react-virtualized',
@@ -15,5 +16,9 @@ const vendor = [
   'moment',
   'localforage',
   'react-loadable',
+  'global',
+  'react-hot-loader/patch',
+  'create-react-class',
+  'react-loader',
 ];
 module.exports = vendor;

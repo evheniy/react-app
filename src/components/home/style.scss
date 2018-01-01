@@ -1,0 +1,11 @@
+.content {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.link {
+  > a {
+    color: white!important;
+  }
+}

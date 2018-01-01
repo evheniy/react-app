@@ -2,7 +2,7 @@ const { join } = require('path');
 
 const devServer = {
   quiet: false,
-  port: 3000,
+  port: 8000,
   contentBase: join(__dirname, '..', 'dist'),
   hot: true,
   historyApiFallback: true,

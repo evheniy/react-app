@@ -6,7 +6,7 @@ const devServer = require('./dev_server');
 const devtool = require('./devtool');
 const settings = {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.css', '.scss', '.png'],
   },
   context: resolve(__dirname, '..'),
   entry: {

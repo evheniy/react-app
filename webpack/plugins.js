@@ -27,23 +27,35 @@ const cleanOptions = {
 
 const plugins = [
   new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
-  new CleanWebpackPlugin(pathsToClean, cleanOptions),
   new LodashModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
     template: join('src', 'index.html'),
   }),
-  new ExtractTextPlugin(join(dist, 'bundle.css'), {
+  new ExtractTextPlugin('bundle.css', {
     allChunks: true,
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    minChunks: Infinity,
+    minChunks: (m) => /node_modules/.test(m.context)
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'lodash',
+    minChunks: (m) => /node_modules\/(?:lodash|moment)/.test(m.context)
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'moment',
+    minChunks: (m) => /node_modules\/(?:moment)/.test(m.context)
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: "manifest",
+    minChunks: Infinity
   }),
   new webpack.NamedModulesPlugin(),
 ];
 
 if (isProduction) {
   plugins.push(
+    new CleanWebpackPlugin(pathsToClean, cleanOptions),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
@@ -73,7 +85,7 @@ if (isProduction) {
     }]),
     new WorkboxPlugin({
       globDirectory: dist,
-      globPatterns: ['**/*.{html,js,css}'],
+      globPatterns: ['**/*.{html,js,css,png}'],
       swSrc: join('src', 'service-worker.js'),
       swDest: join(dist, 'service-worker.js'),
       clientsClaim: true,
@@ -87,7 +99,9 @@ if (isProduction) {
       debug: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    })
   );
 }
 module.exports = plugins;
