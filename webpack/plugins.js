@@ -31,16 +31,18 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: join('src', 'index.html'),
   }),
-  new ExtractTextPlugin('bundle.css', {
-    allChunks: true,
-  }),
+  new ExtractTextPlugin('[name]_[contenthash].css', { allChunks: true }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: (m) => /node_modules/.test(m.context)
   }),
   new webpack.optimize.CommonsChunkPlugin({
+    name: 'react',
+    minChunks: (m) => /node_modules\/(?:react)/.test(m.context)
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
     name: 'lodash',
-    minChunks: (m) => /node_modules\/(?:lodash|moment)/.test(m.context)
+    minChunks: (m) => /node_modules\/(?:lodash)/.test(m.context)
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'moment',

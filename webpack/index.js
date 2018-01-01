@@ -4,6 +4,7 @@ const rules = require('./rules');
 const plugins = require('./plugins');
 const devServer = require('./dev_server');
 const devtool = require('./devtool');
+
 const settings = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.css', '.scss', '.png'],

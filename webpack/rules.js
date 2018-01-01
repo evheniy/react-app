@@ -49,7 +49,10 @@ const rules = [{
 }, {
   // for node_modules
   test: /\.css$/,
-  use: [style, css, postcss],
+  use: ExtractTextPlugin.extract({
+    fallback: style,
+    use: [css, postcss],
+  }),
 }, {
   test: /\.(png|jpg|gif)$/,
   use: [
