@@ -7,6 +7,8 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -53,6 +55,11 @@ const plugins = [
     minChunks: Infinity
   }),
   new webpack.NamedModulesPlugin(),
+  //new FaviconsWebpackPlugin(join('src', 'components', 'home', 'logo.png')),
+  new PreloadWebpackPlugin({
+    rel: 'preload',
+    include: 'all',
+  }),
 ];
 
 if (isProduction) {
@@ -85,6 +92,7 @@ if (isProduction) {
       from: require.resolve('workbox-sw'),
       to: 'workbox-sw.prod.js',
     }]),
+    new CopyWebpackPlugin([{ from: join('src', 'favicon.ico') }]),
     new WorkboxPlugin({
       globDirectory: dist,
       globPatterns: ['**/*.{html,js,css,png}'],
