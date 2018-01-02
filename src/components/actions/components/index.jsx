@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AppBar, Panel, Layout, Navigation, Button } from 'react-toolbox';
 import { Link } from 'react-router-dom';
-
 import style from './style.scss';
-import logo from './logo.png';
 
-module.exports = () => (
+const component = ({ status, initActions }) => (
   <Layout>
     <Panel>
       <AppBar title="React app from scratch">
@@ -27,13 +26,18 @@ module.exports = () => (
         </Navigation>
       </AppBar>
       <div className={style.content}>
-        <img src={logo} alt="logo" />
-        <h1>
-          <a href="https://medium.com/@evheniybystrov/react-app-from-scratch-d694300d1631">
-            Read more...
-          </a>
-        </h1>
+        <div>
+          <h3>State: {status}</h3>
+          <button onClick={initActions}>Init</button>
+        </div>
       </div>
     </Panel>
   </Layout>
 );
+
+component.propTypes = {
+  status: PropTypes.string.isRequired,
+  initActions: PropTypes.func.isRequired,
+};
+
+export default component;
