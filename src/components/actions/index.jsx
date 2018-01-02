@@ -5,8 +5,9 @@ import epics from './epics';
 
 import { injectAsyncEpic, injectAsyncReducer } from '../../store';
 
-export default () => {
-  injectAsyncEpic(epics);
-  injectAsyncReducer('actions', redux);
-  return <Container />;
-};
+injectAsyncEpic(epics);
+injectAsyncReducer('actions', redux);
+
+export default () => (
+  <Container />
+);

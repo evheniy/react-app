@@ -4,7 +4,10 @@ import {
   Route,
 } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import { ConnectedRouter } from 'react-router-redux';
+
 import loading from './components/loader';
+import { history } from './store';
 
 const LoadableHome = Loadable({
   loader: () => import('./components/home'),
@@ -17,10 +20,12 @@ const LoadableActions = Loadable({
 });
 
 export default () => (
-  <Router key={Math.random()}>
-    <div>
-      <Route exact path="/" component={LoadableHome} />
-      <Route path="/actions" component={LoadableActions} />
-    </div>
-  </Router>
+  <ConnectedRouter history={history}>
+    <Router key={Math.random()}>
+      <div>
+        <Route exact path="/" component={LoadableHome} />
+        <Route path="/actions" component={LoadableActions} />
+      </div>
+    </Router>
+  </ConnectedRouter>
 );

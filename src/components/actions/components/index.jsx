@@ -4,7 +4,7 @@ import { AppBar, Panel, Layout, Navigation, Button } from 'react-toolbox';
 import { Link } from 'react-router-dom';
 import style from './style.scss';
 
-const component = ({ status, initActions }) => (
+const component = ({ status, initActions, clearActions }) => (
   <Layout>
     <Panel>
       <AppBar title="React app from scratch">
@@ -28,7 +28,8 @@ const component = ({ status, initActions }) => (
       <div className={style.content}>
         <div>
           <h3>State: {status}</h3>
-          <button onClick={initActions}>Init</button>
+          { status !== 'idle' && <button onClick={initActions}>Init</button> }
+          { status === 'idle' && <button onClick={clearActions}>Clear</button> }
         </div>
       </div>
     </Panel>
@@ -38,6 +39,7 @@ const component = ({ status, initActions }) => (
 component.propTypes = {
   status: PropTypes.string.isRequired,
   initActions: PropTypes.func.isRequired,
+  clearActions: PropTypes.func.isRequired,
 };
 
 export default component;

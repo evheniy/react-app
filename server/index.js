@@ -7,6 +7,7 @@ const Router = require('yeps-router');
 const server = require('yeps-server');
 
 const { resolve } = require('path');
+const { createReadStream } = require('fs');
 
 const schema = require('./schema');
 
@@ -25,5 +26,13 @@ const router = new Router();
 router.all('/graphql').then(graphql({ schema, graphiql }));
 
 app.then(router.resolve());
+
+app.then(ctx => new Promise((res, rej) => {
+  createReadStream(resolve(__dirname, '..', 'dist', 'index.html'))
+    .pipe(ctx.res)
+    .on('error', rej)
+    .on('close', rej)
+    .on('finish', res);
+}));
 
 module.exports = server.createHttpServer(app);

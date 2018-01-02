@@ -9,6 +9,8 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -28,11 +30,10 @@ const cleanOptions = {
 };
 
 const plugins = [
+  new NpmInstallPlugin(),
   new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
   new LodashModuleReplacementPlugin(),
-  new HtmlWebpackPlugin({
-    template: join('src', 'index.html'),
-  }),
+  new HtmlWebpackPlugin({ template: join('src', 'index.html') }),
   new ExtractTextPlugin('[name]_[contenthash].css', { allChunks: true }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -55,11 +56,6 @@ const plugins = [
     minChunks: Infinity
   }),
   new webpack.NamedModulesPlugin(),
-  //new FaviconsWebpackPlugin(join('src', 'components', 'home', 'logo.png')),
-  new PreloadWebpackPlugin({
-    rel: 'preload',
-    include: 'all',
-  }),
 ];
 
 if (isProduction) {
@@ -95,12 +91,31 @@ if (isProduction) {
     new CopyWebpackPlugin([{ from: join('src', 'favicon.ico') }]),
     new WorkboxPlugin({
       globDirectory: dist,
-      globPatterns: ['**/*.{html,js,css,png}'],
+      globPatterns: ['**/*.{html,js,css,png,json}'],
       swSrc: join('src', 'service-worker.js'),
       swDest: join(dist, 'service-worker.js'),
       clientsClaim: true,
       skipWaiting: true,
       navigateFallback: '/index.html',
+    }),
+    new FaviconsWebpackPlugin(join(__dirname, '..', 'src', 'components', 'home', 'logo.png')),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'all',
+    }),
+    new WebpackPwaManifest({
+      name: 'My Progressive Web App',
+      short_name: 'MyPWA',
+      description: 'My awesome Progressive Web App!',
+      background_color: '#ffffff',
+      inject: true,
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: join('src', 'components', 'home', 'logo.png'),
+          sizes: [96, 128, 192, 256, 384, 512]
+        },
+      ]
     })
   );
 } else {
