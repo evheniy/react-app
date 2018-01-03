@@ -98,7 +98,7 @@ if (isProduction) {
       skipWaiting: true,
       navigateFallback: '/index.html',
     }),
-    new FaviconsWebpackPlugin(join(__dirname, '..', 'src', 'components', 'home', 'logo.png')),
+    new FaviconsWebpackPlugin(join(__dirname, '..', 'src', 'modules', 'home', 'logo.png')),
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'all',
@@ -112,7 +112,7 @@ if (isProduction) {
       theme_color: '#ffffff',
       icons: [
         {
-          src: join('src', 'components', 'home', 'logo.png'),
+          src: join('src', 'modules', 'home', 'logo.png'),
           sizes: [96, 128, 192, 256, 384, 512]
         },
       ]

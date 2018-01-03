@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../layout';
 import logo from './logo.png';
 
-module.exports = () => (
+export default () => (
   <Layout>
     <img src={logo} alt="logo" />
     <h1>

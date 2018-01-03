@@ -1,29 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Panel, Layout, Navigation, Button, NavDrawer } from 'react-toolbox';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 
 import style from './style.scss';
 
 const homeLink = (
-  <Link to="/">
+  <NavLink
+    exact
+    to="/"
+    className={style.link}
+    activeClassName={style.selected}
+  >
     <Button
       icon="inbox"
       label="Home"
       flat
     />
-  </Link>
+  </NavLink>
 );
 
 const actionsLink = (
-  <Link to="/actions">
+  <NavLink
+    exact
+    to="/actions"
+    className={style.link}
+    activeClassName={style.selected}
+  >
     <Button
       icon="person"
       label="Actions"
       flat
     />
-  </Link>
+  </NavLink>
 );
 
 const title = 'React app from scratch';
@@ -33,6 +43,7 @@ const Component = ({ children, isDrawerActive, toggleDrawerAction }) => (
     <NavDrawer
       active={isDrawerActive}
       onOverlayClick={toggleDrawerAction}
+      className={style.drawer}
     >
       <Navigation type="vertical">
         <div onClick={toggleDrawerAction}>

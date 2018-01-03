@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../../layout';
 
-const component = ({status, initActions, clearActions}) => (
+const component = ({ status, initActions, clearActions }) => (
   <Layout>
     <div>
       <h1>State: {status}</h1>

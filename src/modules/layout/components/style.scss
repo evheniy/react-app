@@ -8,8 +8,15 @@
   }
 }
 
-.link {
-  > a > button {
-    color: white!important;
-  }
+.link > button {
+  color: white !important;
+  font-weight: normal;
+}
+
+.selected > button {
+  font-weight: 800;
+}
+
+.drawer {
+  background-color: grey;
 }

@@ -21,7 +21,7 @@ const LoadableActions = Loadable({
 
 export default () => (
   <ConnectedRouter history={history}>
-    <Router key={Math.random()}>
+    <Router>
       <div>
         <Route exact path="/" component={LoadableHome} />
         <Route path="/actions" component={LoadableActions} />
