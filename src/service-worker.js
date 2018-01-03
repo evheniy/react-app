@@ -38,4 +38,5 @@ workboxSW.router.registerRoute(/\.(?:png|gif|jpg)$/,
 );
 
 workboxSW.router.registerRoute(/index.html/, workboxSW.strategies.staleWhileRevalidate());
+workboxSW.router.registerRoute('/actions', workboxSW.strategies.staleWhileRevalidate());
 
