@@ -8,6 +8,6 @@ import { injectAsyncEpic, injectAsyncReducer } from '../../store';
 injectAsyncEpic(epics);
 injectAsyncReducer('actions', redux);
 
-export default () => (
-  <Container />
+export default props => (
+  <Container {...props} />
 );

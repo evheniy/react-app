@@ -1,4 +1,4 @@
-import * as constants from './constatnts';
+import * as constants from './constants';
 
 const defaultState = {
   status: 'null',

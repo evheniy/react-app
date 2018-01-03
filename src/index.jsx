@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import Router from './router';
+import Router from './modules/router';
 
 const renderApp = () => {
   render(

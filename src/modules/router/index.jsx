@@ -6,16 +6,16 @@ import {
 import Loadable from 'react-loadable';
 import { ConnectedRouter } from 'react-router-redux';
 
-import loading from './components/loader';
-import { history } from './store';
+import loading from './loader';
+import { history } from '../../store';
 
 const LoadableHome = Loadable({
-  loader: () => import('./components/home'),
+  loader: () => import('../home'),
   loading,
 });
 
 const LoadableActions = Loadable({
-  loader: () => import('./components/actions'),
+  loader: () => import('../actions'),
   loading,
 });
 

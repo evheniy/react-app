@@ -1,11 +1,12 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import { offline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 import { epicMiddleware } from './epics';
+import createReducer from './reducers';
 
 const history = createHistory();
 
@@ -20,7 +21,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
 const storeParams = [
-  combineReducers({ router: routerReducer }),
+  createReducer(),
   window.STATE_FROM_SERVER || {},
   composeEnhancers(applyMiddleware(...middlewares), offline(offlineConfig)),
 ];
@@ -32,7 +33,7 @@ store.asyncReducers = {};
 const injectAsyncReducer = (name, asyncReducer) => {
   store.asyncReducers[name] = asyncReducer;
 
-  store.replaceReducer(combineReducers(store.asyncReducers));
+  store.replaceReducer(createReducer(store.asyncReducers));
 };
 
 export { store, injectAsyncReducer, history };
