@@ -11,7 +11,9 @@
     "start:server": "nodemon server/index.js",
     "test:security": "nsp check",
     "test:lint": "eslint .",
-    "test:server": "mocha tests/**/*.js"
+    "test:server": "mocha tests/**/*.js",
+    "precommit": "npm t",
+    "prepush": "npm t"
   },
   "keywords": [],
   "author": "",
@@ -43,6 +45,7 @@
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
     "image-webpack-loader": "^3.4.2",
     "lodash-webpack-plugin": "^0.11.4",
     "mocha": "^4.1.0",
