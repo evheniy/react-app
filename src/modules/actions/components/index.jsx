@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition, TransitionGroup, Transition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Layout from '../../layout';
 import style from './style.scss';
 

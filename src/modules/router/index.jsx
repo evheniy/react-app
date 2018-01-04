@@ -9,13 +9,8 @@ import { ConnectedRouter } from 'react-router-redux';
 import loading from './loader';
 import { history } from '../../store';
 
-const LoadableHome = Loadable({
-  loader: () => import('../home'),
-  loading,
-});
-
-const LoadableActions = Loadable({
-  loader: () => import('../actions'),
+const LoadableAction = path => Loadable({
+  loader: () => path,
   loading,
 });
 
@@ -23,8 +18,8 @@ export default () => (
   <ConnectedRouter history={history}>
     <Router>
       <div>
-        <Route exact path="/" component={LoadableHome} />
-        <Route path="/actions" component={LoadableActions} />
+        <Route exact path="/" component={LoadableAction(import('../home'))} />
+        <Route path="/actions" component={LoadableAction(import('../actions'))} />
       </div>
     </Router>
   </ConnectedRouter>
