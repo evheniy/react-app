@@ -1,7 +1,9 @@
 import * as constants from './constants';
 
+const status = 'null';
+
 const defaultState = {
-  status: 'null',
+  status,
 };
 
 export default (state = defaultState, action) => {
@@ -11,7 +13,7 @@ export default (state = defaultState, action) => {
     case constants.ACTIONS_IDLE:
       return { ...state, status: 'idle' };
     case constants.ACTIONS_CLEAR:
-      return { ...state, status: '' };
+      return { ...state, status };
     default:
       return state;
   }
