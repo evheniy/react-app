@@ -1,4 +1,5 @@
 webpack/*.js
 dist/*.js
 src/service-worker.js
-
+coverage
+tests/src/helper.js

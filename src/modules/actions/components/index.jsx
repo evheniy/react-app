@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition, TransitionGroup, Transition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Layout from '../../layout';
 import style from './style.scss';
 
@@ -18,7 +18,7 @@ const transitionProps = {
   classNames,
 };
 
-const component = ({ status, initActions, clearActions }) => (
+const Component = ({ status, initActions, clearActions }) => (
   <Layout>
     <div>
       <h1>Status: {status}</h1>
@@ -38,10 +38,10 @@ const component = ({ status, initActions, clearActions }) => (
   </Layout>
 );
 
-component.propTypes = {
+Component.propTypes = {
   status: PropTypes.string.isRequired,
   initActions: PropTypes.func.isRequired,
   clearActions: PropTypes.func.isRequired,
 };
 
-export default component;
+export default Component;

@@ -2,3 +2,5 @@
 node_modules
 dist
 !dist/.gitkeep
+coverage
+npm-debug.log

@@ -1,0 +1,12 @@
+instrumentation:
+  default-excludes: true
+  excludes: ['**/dist/**', '**/coverage/**']
+  include-all-sources: true
+  root: .
+  extensions: ['.js', '.jsx']
+check:
+  global:
+    statements: 80
+    lines: 80
+    branches: 80
+    functions: 80
