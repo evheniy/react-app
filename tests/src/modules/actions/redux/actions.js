@@ -6,7 +6,6 @@ import * as actions from '../../../../../src/modules/actions/redux/actions';
 chai.use(dirtyChai);
 
 describe('Testing actions actions', () => {
-
   it('should test initActions', () => {
     const result = actions.initActions();
     expect(result.type).to.exist();
