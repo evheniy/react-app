@@ -2,7 +2,7 @@ import 'rxjs';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import { ActionsObservable } from 'redux-observable';
-import * as actions from '../../../../../src/modules/actions/redux/actions';
+import * as actions from '../../../../../src/modules/actions/actions';
 import initEpic from '../../../../../src/modules/actions/epics/init';
 
 chai.use(dirtyChai);

@@ -1,4 +1,4 @@
-import { ACTIONS_INIT } from '../redux/constants';
-import { idleActions } from '../redux/actions';
+import { ACTIONS_INIT } from '../constants';
+import { idleActions } from '../actions';
 
 export default action$ => action$.ofType(ACTIONS_INIT).mapTo(idleActions());

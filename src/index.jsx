@@ -1,39 +1,18 @@
-import 'rxjs';
-import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux';
-import { store } from './store';
-import Router from './modules/router';
+import React, { Fragment } from 'react';
+import { app, Loadable } from 'wpb';
+import { Route } from 'react-router-dom';
 
-const renderApp = () => {
-  render(
-    <Provider store={store}>
-      <AppContainer>
-        <Router />
-      </AppContainer>
-    </Provider>,
-    document.getElementById('root'),
-  );
-};
+app(() => (
+  <Fragment>
+    <Route exact path="/" component={Loadable(import('./modules/home'))} />
+    <Route path="/actions" component={Loadable(import('./modules/actions'))} />
+  </Fragment>
+));
 
-const enableHotLoader = () => {
-  if (module.hot) {
-    module.hot.accept();
-  }
-};
-
-const enableServiceWorker = () => {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js').catch(() => {
-      });
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(() => {
     });
-  }
-};
+  });
+}
 
-Promise.all([
-  renderApp(),
-  enableHotLoader(),
-  enableServiceWorker(),
-]);

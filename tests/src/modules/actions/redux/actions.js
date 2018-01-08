@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
-import * as constants from '../../../../../src/modules/actions/redux/constants';
-import * as actions from '../../../../../src/modules/actions/redux/actions';
+import * as constants from '../../../../../src/modules/actions/constants';
+import * as actions from '../../../../../src/modules/actions/actions';
 
 chai.use(dirtyChai);
 

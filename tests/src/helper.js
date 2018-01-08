@@ -1,3 +1,4 @@
+require('babel-polyfill');
 require('babel-register');
 require('ignore-styles');
 const { configure } = require('enzyme');
