@@ -31,6 +31,8 @@ const cleanOptions = {
 
 const plugins = [
   new NpmInstallPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
   new LodashModuleReplacementPlugin(),
   new HtmlWebpackPlugin({ template: join('src', 'index.html') }),
@@ -56,6 +58,7 @@ const plugins = [
     minChunks: Infinity
   }),
   new webpack.NamedModulesPlugin(),
+  new FaviconsWebpackPlugin(join(__dirname, '..', 'src', 'modules', 'home', 'logo.png')),
 ];
 
 if (isProduction) {
@@ -98,7 +101,6 @@ if (isProduction) {
       skipWaiting: true,
       navigateFallback: '/index.html',
     }),
-    new FaviconsWebpackPlugin(join(__dirname, '..', 'src', 'modules', 'home', 'logo.png')),
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'all',

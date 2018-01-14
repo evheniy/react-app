@@ -1,78 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Panel, Layout, Navigation, Button, NavDrawer } from 'react-toolbox';
-import { NavLink } from 'react-router-dom';
-import Media from 'react-media';
-
+import { Layout, Panel } from 'react-toolbox';
+import Drawer from './drawer';
+import Menu from './menu';
+import Bar from './bar';
 import style from './style.scss';
 
-const homeLink = (
-  <NavLink
-    exact
-    to="/"
-    className={style.link}
-    activeClassName={style.selected}
-  >
-    <Button
-      icon="inbox"
-      label="Home"
-      flat
-    />
-  </NavLink>
-);
-
-const actionsLink = (
-  <NavLink
-    exact
-    to="/actions"
-    className={style.link}
-    activeClassName={style.selected}
-  >
-    <Button
-      icon="person"
-      label="Actions"
-      flat
-    />
-  </NavLink>
-);
-
-const title = 'React app from scratch';
-
-const Component = ({ children, isDrawerActive, toggleDrawerAction }) => (
+const Component = ({ children, isDrawerActive, showDrawerAction, hideDrawerAction, routes, title }) => (
   <Layout>
-    <NavDrawer
-      active={isDrawerActive}
-      onOverlayClick={toggleDrawerAction}
-      className={style.drawer}
-    >
-      <Navigation type="vertical">
-        <div onClick={toggleDrawerAction}>
-          {homeLink}
-        </div>
-        <div onClick={toggleDrawerAction}>
-          {actionsLink}
-        </div>
-      </Navigation>
-    </NavDrawer>
+    <Drawer isDrawerActive={isDrawerActive} hideDrawerAction={hideDrawerAction}>
+      <Menu type="vertical" routes={routes} />
+    </Drawer>
     <Panel>
-      <Media query="(max-width: 599px)">
-        {
-          matches => matches ? (
-            <AppBar
-              title={title}
-              leftIcon="menu"
-              onLeftIconClick={toggleDrawerAction}
-            />
-          ) : (
-            <AppBar title={title}>
-              <Navigation type="horizontal" className={style.link}>
-                {homeLink}
-                {actionsLink}
-              </Navigation>
-            </AppBar>
-          )
-        }
-      </Media>
+      <Bar showDrawerAction={showDrawerAction} title={title}>
+        <Menu type="horizontal" routes={routes} />
+      </Bar>
       <div className={style.content}>
         {children}
       </div>
@@ -83,11 +25,15 @@ const Component = ({ children, isDrawerActive, toggleDrawerAction }) => (
 Component.propTypes = {
   children: PropTypes.node,
   isDrawerActive: PropTypes.bool.isRequired,
-  toggleDrawerAction: PropTypes.func.isRequired,
+  showDrawerAction: PropTypes.func.isRequired,
+  hideDrawerAction: PropTypes.func.isRequired,
+  routes: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired,
 };
 
 Component.defaultProps = {
   children: null,
+  routes: [],
 };
 
 export default Component;

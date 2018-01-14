@@ -1,10 +1,10 @@
-import React from 'react';
-import { injectReducer } from 'wpb/lib/store';
+import { injectReducer, injectEpic } from 'wpb/lib/store';
 import Container from './containers';
-import redux from './redux';
+import reducers from './reducers';
+import epics from './epics';
+import { LAYOUT } from './constants';
 
-injectReducer('layout', redux);
+injectReducer(LAYOUT, reducers);
+injectEpic(epics);
 
-export default props => (
-  <Container {...props} />
-);
+export default Container;

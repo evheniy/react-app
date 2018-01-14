@@ -3,9 +3,10 @@ import { injectReducer, injectEpic } from 'wpb/lib/store';
 import Container from './containers';
 import redux from './reducers';
 import epics from './epics';
+import { ACTIONS } from './constants';
 
 injectEpic(epics);
-injectReducer('actions', redux);
+injectReducer(ACTIONS, redux);
 
 export default props => (
   <Container {...props} />

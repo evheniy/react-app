@@ -1,3 +1,4 @@
-export const ACTIONS_INIT = 'ACTIONS_INIT';
-export const ACTIONS_IDLE = 'ACTIONS_IDLE';
-export const ACTIONS_CLEAR = 'ACTIONS_CLEAR';
+export const ACTIONS = '@@actions/ACTIONS';
+export const ACTIONS_INIT = '@@actions/INIT';
+export const ACTIONS_IDLE = '@@actions/IDLE';
+export const ACTIONS_CLEAR = '@@actions/CLEAR';

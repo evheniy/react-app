@@ -1,13 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { spy } from 'sinon';
 
 import Component from '../../../../../src/modules/actions/components';
-import Layout from '../../../../../src/modules/layout';
 
 describe('Testing actions component', () => {
-  const error = console.error;
+  const { error } = console;
 
   beforeEach(() => {
     console.error = () => '';
@@ -21,7 +19,7 @@ describe('Testing actions component', () => {
     let tested = false;
 
     console.error = (text) => {
-      !tested && expect(text).to.include(
+      expect(text).to.include(
         'Warning: Failed prop type: The prop `status` is marked as required in `Component`, but its value is `undefined`.'
       );
       tested = true;
@@ -39,7 +37,7 @@ describe('Testing actions component', () => {
     let tested = false;
 
     console.error = (text) => {
-      !tested && expect(text).to.include(
+      expect(text).to.include(
         'Warning: Failed prop type: The prop `initActions` is marked as required in `Component`, but its value is `undefined`.'
       );
       tested = true;
@@ -57,7 +55,7 @@ describe('Testing actions component', () => {
     let tested = false;
 
     console.error = (text) => {
-      !tested && expect(text).to.include(
+      expect(text).to.include(
         'Warning: Failed prop type: The prop `clearActions` is marked as required in `Component`, but its value is `undefined`.'
       );
       tested = true;

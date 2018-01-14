@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Layout from '../../layout';
 import style from './style.scss';
 
 const classNames = {
@@ -19,23 +18,21 @@ const transitionProps = {
 };
 
 const Component = ({ status, initActions, clearActions }) => (
-  <Layout>
-    <div>
-      <h1>Status: {status}</h1>
-      <TransitionGroup>
-        {status !== 'idle' && (
-          <CSSTransition {...transitionProps}>
-            <button onClick={initActions}>Init</button>
-          </CSSTransition>
-        )}
-        {status === 'idle' && (
-          <CSSTransition {...transitionProps}>
-            <button onClick={clearActions}>Clear</button>
-          </CSSTransition>
-        )}
-      </TransitionGroup>
-    </div>
-  </Layout>
+  <Fragment>
+    <h1>Status: {status}</h1>
+    <TransitionGroup>
+      {status !== 'idle' && (
+        <CSSTransition {...transitionProps}>
+          <button onClick={initActions}>Init</button>
+        </CSSTransition>
+      )}
+      {status === 'idle' && (
+        <CSSTransition {...transitionProps}>
+          <button onClick={clearActions}>Clear</button>
+        </CSSTransition>
+      )}
+    </TransitionGroup>
+  </Fragment>
 );
 
 Component.propTypes = {
