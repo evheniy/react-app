@@ -2,6 +2,7 @@ import React from 'react';
 import { app, Loadable } from 'wpb';
 import { Route } from 'react-router-dom';
 import Layout from './modules/layout';
+import registerObserver from 'react-perf-devtool';
 
 const routes = [
   {
@@ -26,9 +27,12 @@ if (module.hot) {
   module.hot.accept();
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  registerObserver();
+}
+
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').catch(() => {
-    });
+    navigator.serviceWorker.register('service-worker.js').catch(() => {});
   });
 }
