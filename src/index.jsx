@@ -1,19 +1,22 @@
 import React from 'react';
-import { app, Loadable } from 'wpb';
+import app from 'wpb/lib/app';
+import DynamicComponent from 'wpb/lib/dynamic';
 import { Route } from 'react-router-dom';
-import Layout from './modules/layout';
 import registerObserver from 'react-perf-devtool';
+import Layout from './modules/layout';
+import HomePlaceholder from './modules/home/placeholder';
+import ActionsPlaceholder from './modules/actions/components/placeholder';
 
 const routes = [
   {
     path: '/',
     exact: true,
-    component: Loadable(import('./modules/home')),
+    component: DynamicComponent(import('./modules/home'), HomePlaceholder),
   },
   {
     path: '/actions',
     exact: true,
-    component: Loadable(import('./modules/actions')),
+    component: DynamicComponent(import('./modules/actions'), ActionsPlaceholder),
   },
 ];
 
