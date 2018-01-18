@@ -1,0 +1,27 @@
+{
+  "extension": [".js",".jsx"],
+  "require": ["./tests/src/helper.js"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "webpack",
+    "coverage",
+    "tests",
+    "src/service-worker.js",
+    "postcss.config.js",
+    "webpack.config.js"
+  ],
+  "check-coverage": true,
+  "per-file": true,
+  "lines": 0,
+  "statements": 0,
+  "functions": 0,
+  "branches": 0,
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary",
+    "html"
+  ],
+  "all": true
+}

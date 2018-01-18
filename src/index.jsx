@@ -2,7 +2,6 @@ import React from 'react';
 import app from 'wpb/lib/app';
 import DynamicComponent from 'wpb/lib/dynamic';
 import { Route } from 'react-router-dom';
-import registerObserver from 'react-perf-devtool';
 import Layout from './modules/layout';
 import HomePlaceholder from './modules/home/placeholder';
 import ActionsPlaceholder from './modules/actions/components/placeholder';
@@ -31,7 +30,7 @@ if (module.hot) {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  registerObserver();
+  require('react-perf-devtool')();
 }
 
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
