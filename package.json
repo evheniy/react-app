@@ -14,6 +14,7 @@
     "test:server": "NODE_ENV=test mocha tests/server/**/*.js",
     "test:src": "mocha --require tests/src/helper.js tests/src/**/*.{js,jsx}",
     "test:coverage": "NODE_ENV=test nyc mocha tests/**/**/*.{js,jsx}",
+    "test:build": "npm run start:build",
     "precommit": "npm t",
     "prepush": "npm t"
   },

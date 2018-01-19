@@ -13,6 +13,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
+process.env.PUBLIC_PATH = process.env.PUBLIC_PATH || '/';
 
 const dist = 'dist';
 
@@ -33,7 +34,10 @@ const plugins = [
   new NpmInstallPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: 'development',
+    PUBLIC_PATH: JSON.stringify(process.env.PUBLIC_PATH),
+  }),
   new LodashModuleReplacementPlugin(),
   new HtmlWebpackPlugin({ template: join('src', 'index.html') }),
   new ExtractTextPlugin('[name]_[contenthash].css', { allChunks: true }),
