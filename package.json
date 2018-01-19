@@ -16,7 +16,10 @@
     "test:coverage": "NODE_ENV=test nyc mocha tests/**/**/*.{js,jsx}",
     "test:build": "npm run start:build",
     "precommit": "npm t",
-    "prepush": "npm t"
+    "prepush": "npm t",
+    "docker:build": "docker build -t react .",
+    "docker:run": "docker run -d -p 3000:3000 --name react react",
+    "docker:stop": "docker rm -f react"
   },
   "keywords": [],
   "author": "",
@@ -93,10 +96,10 @@
     "react-loader": "^2.4.2",
     "react-media": "^1.6.1",
     "react-perf-devtool": "^3.0.2",
-    "react-placeholder": "^2.0.0",
     "react-proxy": "^1.1.8",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-toolbox": "^2.0.0-beta.12",

@@ -126,9 +126,16 @@
       left: 300px;
       top: 88px;
   }
-  .top{
+  .top {
     margin-bottom: 10px;
     height: 60px;
+  }
+  .top > noscript {
+    top: 19px;
+    position: relative;
+    text-align: center;
+    display: block;
+    font-size: large;
   }
   .main {
     margin: 0 auto;
@@ -137,10 +144,10 @@
   </style>
 </head>
 <body>
-<noscript>Your browser does not support JavaScript!</noscript>
 <div id="root">
   <div class="timeline-wrapper">
     <div class="animated-background top">
+      <noscript>Your browser does not support JavaScript!</noscript>
       <div class="background-masker bar"></div>
     </div>
       <div class="timeline-item main">

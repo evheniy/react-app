@@ -1,27 +1,12 @@
 import React from 'react';
 import app from 'wpb/lib/app';
-import DynamicComponent from 'wpb/lib/dynamic';
-import { Route } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import Layout from './modules/layout';
-import HomePlaceholder from './modules/home/placeholder';
-import ActionsPlaceholder from './modules/actions/components/placeholder';
-
-const routes = [
-  {
-    path: '/',
-    exact: true,
-    component: DynamicComponent(import('./modules/home'), HomePlaceholder),
-  },
-  {
-    path: '/actions',
-    exact: true,
-    component: DynamicComponent(import('./modules/actions'), ActionsPlaceholder),
-  },
-];
+import routes from './routes';
 
 app(() => (
   <Layout routes={routes} title="React app from scratch">
-    {routes.map(props => <Route key={props.path} {...props} />)}
+    {renderRoutes(routes)}
   </Layout>
 ));
 
