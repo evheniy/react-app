@@ -2,6 +2,7 @@ const App = require('yeps');
 
 const error = require('yeps-error');
 const serve = require('yeps-static');
+const index = require('yeps-index');
 const graphql = require('yeps-graphql');
 const Router = require('yeps-router');
 const server = require('yeps-server');
@@ -18,7 +19,8 @@ const app = new App();
 
 app.all([
   error(),
-  serve({ root }),
+  serve({ root, index: false }),
+  index({ root }),
 ]);
 
 const router = new Router();

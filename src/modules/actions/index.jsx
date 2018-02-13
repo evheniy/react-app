@@ -5,7 +5,7 @@ import redux from './reducers';
 import epics from './epics';
 import { ACTIONS } from './constants';
 
-injectEpic(epics);
+injectEpic(ACTIONS, epics);
 injectReducer(ACTIONS, redux);
 
 export default props => (

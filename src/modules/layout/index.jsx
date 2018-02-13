@@ -5,6 +5,6 @@ import epics from './epics';
 import { LAYOUT } from './constants';
 
 injectReducer(LAYOUT, reducers);
-injectEpic(epics);
+injectEpic(LAYOUT, epics);
 
 export default Container;
