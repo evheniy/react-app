@@ -80,7 +80,7 @@
     "workbox-webpack-plugin": "^2.1.2"
   },
   "dependencies": {
-    "@redux-offline/redux-offline": "^2.2.1",
+    "@redux-offline/redux-offline": "2.2.1",
     "babel-polyfill": "^6.26.0",
     "debug": "^3.1.0",
     "graphql": "^0.13.1",
