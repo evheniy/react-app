@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "test": "NODE_ENV=test PORT=500 npm-run-all test:*",
+    "test": "NODE_ENV=test PORT=4000 npm-run-all test:*",
     "start": "NODE_ENV=production npm-run-all start:*",
     "start:build": "webpack -p",
     "start:server": "nodemon server/index.js",
@@ -14,7 +14,7 @@
     "test:server": "NODE_ENV=test mocha tests/server/**/*.js",
     "test:src": "mocha --require tests/src/helper.js tests/src/**/*.{js,jsx}",
     "test:coverage": "NODE_ENV=test nyc mocha tests/**/**/*.{js,jsx}",
-    "test:build": "npm run start:build",
+    "test:build": "NODE_ENV=production npm run start:build",
     "precommit": "npm t",
     "prepush": "npm t",
     "docker:build": "docker build -t react .",
@@ -80,7 +80,7 @@
     "workbox-webpack-plugin": "^2.1.2"
   },
   "dependencies": {
-    "@redux-offline/redux-offline": "^2.3.1",
+    "@redux-offline/redux-offline": "^2.2.1",
     "babel-polyfill": "^6.26.0",
     "debug": "^3.1.0",
     "graphql": "^0.13.1",
