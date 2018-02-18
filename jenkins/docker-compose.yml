@@ -16,7 +16,7 @@ services:
 
   registry:
     image: registry
-    container_name: jenkins
+    container_name: registry
     restart: always
     ports:
       - 5000:5000
