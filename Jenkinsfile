@@ -1,7 +1,7 @@
 node {
   try {
     stage('Checkout') {
-      // checkout scm
+      checkout scm
     }
     stage('Environment') {
       sh 'git --version'
@@ -13,8 +13,7 @@ node {
       sh 'docker build -t react-test -f Dockerfile.test --no-cache . '
     }
     stage('Docker test'){
-      sh "docker run -v $PWD/coverage:/usr/src/app/coverage --rm react-test"
-      echo "$PWD/coverage:/usr/src/app/coverage"
+      sh "docker run -v ${env.WORKSPACE}/coverage:/usr/src/app/coverage --rm react-test"
     }
     stage('Coverage report'){
       publishHTML([
@@ -31,10 +30,10 @@ node {
     }
     stage('Deploy'){
       if(env.BRANCH_NAME == 'master'){
-        //sh 'docker build -t react-app --no-cache .'
-        //sh 'docker tag react-app localhost:5000/react-app'
-        //sh 'docker push localhost:5000/react-app'
-        //sh 'docker rmi -f react-app localhost:5000/react-app'
+        sh 'docker build -t react-app --no-cache .'
+        sh 'docker tag react-app localhost:5000/react-app'
+        sh 'docker push localhost:5000/react-app'
+        sh 'docker rmi -f react-app localhost:5000/react-app'
       }
     }
   }
