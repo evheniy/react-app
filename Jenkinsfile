@@ -13,17 +13,7 @@ node {
       sh 'docker build -t react-test -f Dockerfile.test --no-cache . '
     }
     stage('Docker test'){
-      sh 'docker run -v "$(pwd)"/coverage:/usr/src/app/coverage --rm react-test'
-    }
-    stage('Coverage report'){
-      publishHTML([
-        reportName: 'Coverage Report',
-        allowMissing: false,
-        alwaysLinkToLastBuild: false,
-        keepAll: true,
-        reportDir: 'coverage',
-        reportFiles: 'index.html'
-      ])
+      sh 'docker run --rm react-test'
     }
     stage('Clean Docker test'){
       sh 'docker rmi react-test'
