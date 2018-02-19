@@ -9,7 +9,8 @@
     "tests",
     "src/service-worker.js",
     "postcss.config.js",
-    "webpack.config.js"
+    "webpack.config.js",
+    "jenkins"
   ],
   "check-coverage": true,
   "per-file": true,
