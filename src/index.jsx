@@ -15,7 +15,7 @@ if (module.hot) {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  require('react-perf-devtool')();
+  // require('react-perf-devtool')();
 }
 
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
