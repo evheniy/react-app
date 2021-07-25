@@ -27,7 +27,7 @@ node {
       }
     }
   }
-  catch (err) {
-    throw err
+  catch (error) {
+    throw error
   }
 }
